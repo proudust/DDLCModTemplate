@@ -1,24 +1,26 @@
-# Welcome to the Modification Club!
+# MOD部へようこそ！
 
-The DDLC Mod Template is an easy way to get started building your own game mods for Doki Doki Literature Club that adhere to [Team Salvato's IP Guidelines](http://teamsalvato.com/ip-guidelines/) for fan mods.
+DDLC Mod テンプレートを使用すると、Doki Doki Literature Club 用 MOD の作成を簡単に始めることができます。  
+作成の際は [Team Salvato's IP Guidelines](http://teamsalvato.com/ip-guidelines/) を遵守するようにしてください。  
 
-### Getting Started
-Follow these steps to set up the template.
+### 使い方
+以下の手順に従って、テンプレートを使用する準備をしてください。
 
-1. Download and install the [Ren'Py SDK version 6.99.12](https://www.renpy.org/release/6.99.12). *(NOTE: The current version of DDLC is not compatible with .rpyc files generated with other versions of the Renpy SDK)*
-2. Go to releases to download the [latest stable build](https://github.com/therationalpi/DDLCModTemplate/releases). For development builds, fork this repository or download the files by clicking the button labeled "Clone or Download" above.
-3. Place the files in the Ren'py working directory (chosen during installation).
-4. Download the DDLC files (available for free at http://ddlc.moe) & drop the `audio.rpa`, `images.rpa`, and `fonts.rpa` files from it into the /game directory. (Do **not** include the `scripts.rpa` file, as this will create conflicts.)
-5. Launch the project in Ren'Py. It should compile & run.
-6. Navigate the Ren'Py menu & select "Build Distributions." Check "DDLC Compatible Mod" and build the mod. This will create a cross-platform .ZIP file with files for the mod & installation instructions.
+1. [Ren'Py SDK version 6.99.12](https://www.renpy.org/release/6.99.12)をダウンロードします。
+   *(注: DDLC は他のバージョンの Ren'Py SDK で生成された .rpyc ファイルと互換性はありません。)*
+2. [releases](https://github.com/proudust/DDLCModTemplate/releases) から最新の安定版、または [Use this template](https://github.com/proudust/DDLCModTemplate/generate) から新しいリポジトリを作成してください。
+3. ファイルを Ren'Py のプロジェクトディレクトリに置きます。 (インストール時に選択します)
+4. DDLC 本体を[ダウンロード](http://ddlc.moe)し、中の`audio.rpa`・`images.rpa`・`fonts.rpa` をテンプレートの game フォルダに移動します。(`scripts.rpa` は移動しないでください。)
+5. Ren'Py でプロジェクトをコンパイルし、起動します。
+6. Ren'Py メニューに移動して、"配布物のビルド" を選択します。 "DDLC Compatible Mod" にチェックを入れてビルドしてください。この操作で、配布用の zip ファイルを生成できます。
 
-### Template Features
-1. Import save data from DDLC. This will *not* affect the original game.
-2. Build Packaging. Distribute cross-platform mods with ease thanks to Ren'Py.
-3. Mod Installation instructions & guide. Run the game to get a short introduction by Monika!
-4. Splash screen on first load. This adheres to the Team Salvato guidelines for creating fan mods of the game.
-5. Customizable! Use as a starting point for any ideas you wish to create.
+### テンプレートの機能
+1. DDLC 本編のセーブデータをインポートします。これは元のゲームには影響*しません*。
+2. MOD 用のビルド設定があらかじめ用意されています。Ren'Py のおかげで Windows・Mac・Linux 共用の MOD を簡単に配布できます。
+3. Mod のインストール手順とガイド。ゲームを実行することで、モニカによる簡単な説明を受けることができます。
+4. 初回ロード時の警告文。ガイドラインにより実装が義務付けられています。
+5. カスタマイズ可能！あなたの作成したいアイデアの出発点として使用してください。
 
 ## DDLC-Toolkit
 
-We're proud to be a submodule of the [DDLC-Toolkit](https://github.com/GarnetSunset/DDLC-Toolkit).
+私たちは [DDLC-Toolkit](https://github.com/GarnetSunset/DDLC-Toolkit) のサブモジュールであることを誇りに思います。

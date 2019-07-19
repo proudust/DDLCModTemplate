@@ -1,93 +1,93 @@
 
 
-# human readable name of this game
-# _() marks strings eligable for translation
+# ゲーム名
+# _() で囲うことで、翻訳対象になります。
 define config.name = "DDLC Mod Template"
 
-# True shows the name on main menu, False hides it
+# True ならメインメニューにタイトルを表示、False なら非表示
 define gui.show_name = True
 
-# Version of the game
+# Mod のバージョン
 define config.version = "1.1.2"
 
-# text placed on about screen
+# about スクリーンに表示される文字列
 define gui.about = _("")
 
-# short name used in executables and dirs.
-# ASCII-only, no spaces, no colons, no semis
+# 実行ファイル名とディレクトリ名で使用される短い名前
+# 英数字のみ、スペース禁止、コロン禁止、セミコロン禁止
 define build.name = "DDLCModTemplate"
 
-# Controls which sound / music mixers are available
+# 上から順に効果音、BGM、ボイスを使用するなら True
 define config.has_sound = True
 define config.has_music = True
 define config.has_voice = False
 
-# main menu music
+# ゲームメニューの BGM
 define config.main_menu_music = audio.t1
 
-# enter / exiting game menu transitions
+# ゲームメニューの前後に使用するトランジション
 define config.enter_transition = Dissolve(.2)
 define config.exit_transition = Dissolve(.2)
 
-# transition used when the game has been loaded
+# ロード時に使用するトランジション
 define config.after_load_transition = None
 
-# transition used when teh game has ended
+# ゲーム終了時に使用するトランジション
 define config.end_game_transition = Dissolve(.5)
 
-# Controls when dialogue window is displayed:
-#   show - always displayed
-#   hide - only displayed if dialogue is present
-#   auto - hidden before scene statements and shown when dialogue is shown
+# ダイアログの表示タイミングの制御
+#   show - 常に表示
+#   hide - ダイアログが存在する場合のみ
+#   auto - scene ステートメント の前に隠し、ダイアログが表示されるときに表示します
 #
-# this can be changed with "window <type>" statements
+# これは"window <type>" ステートメントで変更できます
 define config.window = "auto"
 
-# transitions used to show / hide the dialogue window
+# ダイアログの表示に使用するトランジション
 define config.window_show_transition = Dissolve(.2)
 define config.window_hide_transition = Dissolve(.2)
 
-# default text speed
-# 0 is infinite
-# > 0 is number of characters per second
+# 文字表示速度の初期値
+# 0 なら一瞬
+# 0 以上なら 1 秒あたりに表示する文字数
 default preferences.text_cps = 50
 
-# default auto-forward delay. 0 - 30.
+# オート待ち時間の初期値 (0 ~ 30 の間で設定)
 default preferences.afm_time = 15
 
-# default volumes
+# ボリュームの初期値
 default preferences.music_volume = 0.75
 default preferences.sfx_volume = 0.75
 
-# persistent data save directory
-# this is different per platform:
+# セーブデータの保存ディレクトリ名
+# ディレクトリの場所は以下の通り
 #   Windows: %AAPDATA%\RenPy\
 #   Mac: $HOME/Libary/RenPy/
 #   Linux: $HOME/.renpy/
 #
-# must be a literal string
+# 文字列の定数である必要があります
 define config.save_directory = "DDLC_Mod_Template"
 
-# icon displayed on taskbar / dock
+# タスクバーやドックに表示されるアイコン
 define config.window_icon = "gui/window_icon.png"
 
-# True means we allow skipping, False means not
+# True ならスキップ可能、False なら不可
 define config.allow_skipping = True
 
-# True means we can autosave, false means not
+# True ならオートセーブを有効、False なら無効
 define config.has_autosave = False
 
-# True means autosave when we quit, False means not
+# True なら終了時にオートセーブ、False ならしない
 define config.autosave_on_quit = False
 
-# Number of autosave slots to use
+# 使用するオートセーブ数
 define config.autosave_slots = 0
 
-# layers that screens / images / anything can be displayed on. Best not to
-# mess with this
+# 使用するレイヤーの宣言
+# 変更しないように
 define config.layers = [ 'master', 'transient', 'screens', 'overlay', 'front' ]
 
-# Other things to not mess with
+# その他の変更する必要のないもの
 define config.image_cache_size = 64
 define config.predict_statements = 50
 define config.rollback_enabled = config.developer
@@ -99,8 +99,8 @@ init python:
     if len(renpy.loadsave.location.locations) > 1: del(renpy.loadsave.location.locations[1])
     renpy.game.preferences.pad_enabled = False
     def replace_text(s):
-        s = s.replace('--', u'\u2014') 
-        s = s.replace(' - ', u'\u2014') 
+        s = s.replace('--', u'\u2014')
+        s = s.replace(' - ', u'\u2014')
         return s
     config.replace_text = replace_text
 
@@ -117,43 +117,43 @@ init python:
 
 
 
-# BUILD CONFIG
+# ビルド設定
 
 init python:
 
-    # the following functions take file pattersn:
-    # file patterns are case-insensitive and matched against the path relative to the 
+    # ファイルパターン:
+    # file patterns are case-insensitive and matched against the path relative to the
     # base directory, with and without a leading /. If multiple patterns match
     # the first is used.
     #
-    # / is directory separator
-    # * matches all characters, exxcept directory separator
-    # ** matches all characters, including directory separator
+    # /  : ディレクトリの区切り
+    # *  : / 以外の任意の文字列
+    # ** : / を含む任意の文字列
     #
-    # EXAMPLES
-    # *.txt - - matches txt files in base directory
-    # game/**.ogg - mathces ogg files in game directory or subdirs of game
-    # **.psd - matches psd files anywhere in project
+    # 例
+    # *.txt - ルートディレクトリの全ての .txt ファイル
+    # game/**.ogg - game ディレクトリとそのサブディレクトリ内の全ての .ogg ファイル
+    # **.psd - プロジェクト内の全ての .psd ファイル
     #
-    # Classify files as None to exclusde them from the built distributions
+    # ビルド結果から除外したいファイルには None を指定します。
     #
 
-    # packaged ZIP for distibution
-    build.package(build.directory_name + "Mod",'zip',build.name,description='DDLC Compatible Mod')
+    # 配布用
+    build.package(build.directory_name + "Mod", 'zip', build.name, description='DDLC Compatible Mod')
 
-    # archives to create
-    build.archive("scripts",build.name)
-    build.archive("mod_assets",build.name)
-    build.archive("submods",build.name)
+    # 新しい rpa ファイルの宣言
+    build.archive("scripts", build.name)
+    build.archive("mod_assets", build.name)
+    build.archive("submods", build.name)
 
-    # folder / files to put in archives
-    build.classify("game/mod_assets/**","mod_assets")
-    build.classify("game/submods/**","submods")
-    build.classify('game/**.rpyc',"scripts")
-    build.classify('game/advanced_scripts/**',"scripts")
-    build.classify('game/original_story_scripts/**',"scripts")
+    # rpa ファイルに入れるファイルを宣言
+    build.classify("game/mod_assets/**"," mod_assets")
+    build.classify("game/submods/**", "submods")
+    build.classify('game/**.rpyc', "scripts")
+    build.classify('game/advanced_scripts/**', "scripts")
+    build.classify('game/original_story_scripts/**', "scripts")
 
-    # stuff to ignore
+    # 無視するファイル
     build.classify('**~', None)
     build.classify('**.bak', None)
     build.classify('**/.**', None)
@@ -167,15 +167,15 @@ init python:
     build.classify('script-regex.txt', None)
     build.classify('/game/10', None)
     build.classify('/game/cache/*.*', None)
-    build.classify('**.rpa',None)
+    build.classify('**.rpa', None)
 
-    # stuff not in archive
-    build.classify('README.html',build.name)
-    
-    # Doki Doki Mod Manager metadata file
-    build.classify('ddmm-mod.json',build.name)
+    # zip に入れるファイル
+    build.classify('README.html', build.name)
 
-    # mark as documentation
+    # Doki Doki Mod Manager 用のメタデータファイル
+    build.classify('ddmm-mod.json', build.name)
+
+    # ドキュメントとしてマーク
     build.documentation('README.html')
 
     build.include_old_themes = False

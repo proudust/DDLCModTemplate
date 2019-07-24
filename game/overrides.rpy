@@ -1,31 +1,28 @@
-## This file is for overriding specific declarations from DDLC
-## Use this if you want to change a few variables, but don't want
-## to replace entire script files that are otherwise fine.
+## このファイルは DDLC の特定の宣言を上書きするためのスクリプトです。
+## 値を変更したいが、元のスクリプトを全て置き換えたくはない場合に使用してください。
 
-## Normal overrides
-## These overrides happen after any of the normal init blocks in scripts
-## Use these to chagne variables on screens, effects, etc
+## 通常のオーバーライド
+## スクリプト内の通常の init ブロックの後に実行されます。
+## 画面上の値、エフェクトなどを変更したい場合に使用します。
 init 10 python:
     pass
 
-## LAte overrides
-## These overrides happen aftre prety much everything else in startup.
-## Use these to change displayables and other late definitions in renpy.
+## 遅延オーバーライド
+## スクリプト内の一部を除いた全ての init ブロックの後に実行されます。
+## Displayable などを変更したい場合に使用します。
 init 501 python:
     pass
 
-## Early overrides
-## These overrides happen befoer the normal init blcosk in scripts
-## Use these in the rare event taht you need to overwrite some variable
-## before it's called in another init blcok
-## You probably wont use this
+## 早期オーバーライド
+## スクリプト内の通常の init ブロックの前に実行されます。
+## 値を init ブロックで参照される前に変更したい場合に使用します。
+## 殆どの場合必要ありません。
 init -10 python:
     pass
 
-## Super early overrides
-## These get called before any of the init blocks are read, before the
-## persistent data is read. Basically right after RenPy loads itself but 
-## before the game / mod is loaded.
-## You almost never will need this
+## 初期化前オーバーライド
+## スクリプト内の全ての init ブロックの前に実行されます。
+## この処理の後、 Ren'Py や DDLC、MOD の初期化が行われます。
+## 殆どの場合必要ありません。
 python early:
     pass
